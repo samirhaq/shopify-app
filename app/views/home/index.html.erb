@@ -5,22 +5,22 @@
     });
   </script>
 <% end %>
-<h2>Products</h2>
-
-<ul>
-  <% @products.each do |product| %>
-    <li><%= link_to product.title, "https://#{@shop_session.url}/admin/products/#{product.id}", target: "_top" %></li>
-  <% end %>
-</ul>
-
-<hr>
-
 <h2>Vendors</h2>
 
-<% if @vendors.present? %>
+<%= collection_select("post", "keys", @order, "keys", "keys")%>
+<hr>
+
+<h2><%=find_field("vendor-menu")%></h2>
+
+<% if @order.present? %>
   <ul>
-    <% @vendors.each do |vendor| %>
-      <li><%= vendor %></li>
+    <% @order.each do |key, values| %>
+    <li><%= key %></li>
+      <ul>
+      <% values.each do |value| %>
+      <li><%= value["title"] %>: <%= value["sku"] %> x <%= value["quantity"] %></li>
+      <% end %>
+    </ul>
     <% end %>
   </ul>
 <% else %>

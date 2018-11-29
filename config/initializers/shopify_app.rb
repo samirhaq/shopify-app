@@ -8,7 +8,6 @@ ShopifyApp.configure do |config|
   config.after_authenticate_job = false
   config.session_repository = ShopifyApp::InMemorySessionStore
   config.webhooks = [
-    {topic: 'orders/create', address: 'https://b82bc646.ngrok.io/create_orders', format: 'json'},
+    {topic: 'orders/create', address: 'https://0bc1440b.ngrok.io/create_orders', format: 'json'},
   ]
-  #ShopifyApp::WebhooksManagerJob.perform_now(shop_domain: "fintechmafia.myshopify.com", shop_token: , webhooks: webhooks)
 end
